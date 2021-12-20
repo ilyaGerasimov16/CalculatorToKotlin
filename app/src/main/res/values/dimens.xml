@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSize">30sp</dimen>
+    <dimen name="textSizeView">35sp</dimen>
+    <dimen name="margin_button">3sp</dimen>
+    <dimen name="button_width">80sp</dimen>
+    <dimen name="button_height">60sp</dimen>
+    <dimen name="min_height_TextView1">48dp</dimen>
+    <dimen name="margin_TextView">10sp</dimen>
+    <dimen name="settings_textSize">20sp</dimen>
+    <dimen name="button_settingsMargin">20sp</dimen>
+    <dimen name="margin_radioGroup">32dp</dimen>
+    <dimen name="margin_buttonReturn">32dp</dimen>
+    <dimen name="settings_textSizeView">20sp</dimen>
+</resources>

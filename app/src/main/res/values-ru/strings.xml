@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Мой_Калькулятор</string>
+    <string name="button_settingsText">Настройки</string>
+
+    <string name="my_cool_style">Моя тема</string>
+    <string name="material_light">Вторая тема</string>
+    <string name="material_light_action_bar_dark">Третья тема</string>
+    <string name="material_dark">Тёмная тема</string>
+
+    <string name="button_textReturn">Возврат</string>
+</resources>
