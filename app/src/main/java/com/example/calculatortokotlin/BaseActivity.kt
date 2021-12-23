@@ -1,57 +1,47 @@
-package com.example.calculatortokotlin;
+package com.example.calculatortokotlin
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 
 
-import android.content.SharedPreferences;
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.calculatortokotlin.R;
-
-public class BaseActivity extends AppCompatActivity {
-
-
-    private static final String NameSharedPreference = "Calc";
-    private static final String AppTheme = "APP_THEME";
-    protected static final int MyCoolCodeStyle = 0;
-    protected static final int AppThemeLightCodeStyle = 1;
-    protected static final int AppThemeCodeStyle = 2;
-    protected static final int AppThemeDarkCodeStyle = 3;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setTheme(getAppTheme(R.style.MyCoolStyle));
+open class BaseActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setTheme(getAppTheme(R.style.MyCoolStyle))
     }
 
-
-    private int getAppTheme(int codeStyle) {
-        return codeStyleToStyleId(getCodeStyle(codeStyle));
+    private fun getAppTheme(codeStyle: Int): Int {
+        return codeStyleToStyleId(getCodeStyle(codeStyle))
     }
 
-    private int codeStyleToStyleId(int codeStyle){
-        switch(codeStyle){
-            case AppThemeCodeStyle:
-                return R.style.Theme_Lesson2;
-            case AppThemeLightCodeStyle:
-                return R.style.AppThemeLight;
-            case AppThemeDarkCodeStyle:
-                return R.style.AppThemeDark;
-            default:
-                return R.style.MyCoolStyle;
+    private fun codeStyleToStyleId(codeStyle: Int): Int {
+        return when (codeStyle) {
+            AppThemeCodeStyle -> R.style.Theme_Lesson2
+            AppThemeLightCodeStyle -> R.style.AppThemeLight
+            AppThemeDarkCodeStyle -> R.style.AppThemeDark
+            else -> R.style.MyCoolStyle
         }
     }
 
-    protected int getCodeStyle(int codeStyle){
-        SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
-        return sharedPref.getInt(AppTheme, codeStyle);
+    protected fun getCodeStyle(codeStyle: Int): Int {
+        val sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE)
+        return sharedPref.getInt(AppTheme, codeStyle)
     }
-    protected void setAppTheme(int codeStyle) {
-        SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(AppTheme, codeStyle);
-        editor.apply();
+
+    protected fun setAppTheme(codeStyle: Int) {
+        val sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putInt(AppTheme, codeStyle)
+        editor.apply()
+    }
+
+
+    companion object {
+        private const val NameSharedPreference = "Calc"
+        private const val AppTheme = "APP_THEME"
+        const val MyCoolCodeStyle = 0
+        const val AppThemeLightCodeStyle = 1
+        const val AppThemeCodeStyle = 2
+        const val AppThemeDarkCodeStyle = 3
     }
 }
-
