@@ -3,48 +3,45 @@ package com.example.calculatortokotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.os.Bundle
-import com.example.calculatortokotlin.R
 import android.content.Intent
-import android.view.View
 import android.widget.Button
-import com.example.calculatortokotlin.SettingsActivity
 import java.lang.Exception
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private var textView: TextView? = null
-    var valueButton1 = "1"
-    var valueButton2 = "2"
-    var valueButton3 = "3"
-    var valueButton4 = "4"
-    var valueButton5 = "5"
-    var valueButton6 = "6"
-    var valueButton7 = "7"
-    var valueButton8 = "8"
-    var valueButton9 = "9"
-    var valueButton0 = "0"
-    var valueButtonPoint = "."
-    var button1: Button? = null
-    var button2: Button? = null
-    var button3: Button? = null
-    var button4: Button? = null
-    var button5: Button? = null
-    var button6: Button? = null
-    var button7: Button? = null
-    var button8: Button? = null
-    var button9: Button? = null
-    var button0: Button? = null
-    var buttonAdd: Button? = null
-    var buttonSub: Button? = null
-    var buttonMul: Button? = null
-    var buttonDiv: Button? = null
-    var buttonPoint: Button? = null
-    var buttonSettings: Button? = null
-    var currentValue = ""
-    var currentAction = 0 // 1 - сложение; 2 - вычитание; 3 - умножение; 4 - деление;
-    var arg1: Double? = null
-    var arg2: Double? = null
-    var result: Double? = null
+    private val valueButton1 = "1"
+    private val valueButton2 = "2"
+    private val valueButton3 = "3"
+    private val valueButton4 = "4"
+    private val valueButton5 = "5"
+    private val valueButton6 = "6"
+    private val valueButton7 = "7"
+    private val valueButton8 = "8"
+    private val valueButton9 = "9"
+    private val valueButton0 = "0"
+    private val valueButtonPoint = "."
+    private var button1: Button? = null
+    private var button2: Button? = null
+    private var button3: Button? = null
+    private var button4: Button? = null
+    private var button5: Button? = null
+    private var button6: Button? = null
+    private var button7: Button? = null
+    private var button8: Button? = null
+    private var button9: Button? = null
+    private var button0: Button? = null
+    private var buttonAdd: Button? = null
+    private var buttonSub: Button? = null
+    private var buttonMul: Button? = null
+    private var buttonDiv: Button? = null
+    private var buttonPoint: Button? = null
+    private var buttonSettings: Button? = null
+    private var currentValue = ""
+    private var currentAction = 0 // 1 - сложение; 2 - вычитание; 3 - умножение; 4 - деление;
+    private var arg1: Double? = null
+    private var arg2: Double? = null
+    private var result: Double? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -101,21 +98,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initButtonSettingsClickListener() {
-        buttonSettings!!.setOnClickListener { v: View? ->
+        buttonSettings!!.setOnClickListener {
             val runSettings = Intent(this@MainActivity, SettingsActivity::class.java)
             startActivity(runSettings)
         }
     }
 
     private fun initButtonDigitClickListener(but: Button?, valueButton: String) {
-        but!!.setOnClickListener { view: View? ->
+        but!!.setOnClickListener {
             setTextButton(currentValue + valueButton)
-            currentValue = currentValue + valueButton
+            currentValue += valueButton
         }
     }
 
     private fun initButtonActionClickListener(but: Button?, currentAct: Int) {
-        but!!.setOnClickListener { view: View? ->
+        but!!.setOnClickListener {
             try {
                 if (currentValue == "" && but == buttonSub) {
                     currentValue = "-"
@@ -133,7 +130,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initButtonResultClickListener() {
         val buttonResult = findViewById<Button>(R.id.buttonResult)
-        buttonResult.setOnClickListener { view: View? ->
+        buttonResult.setOnClickListener {
             if (currentValue == "") {
                 setTextButton("0")
             } else {
@@ -146,7 +143,7 @@ class MainActivity : AppCompatActivity() {
                     4 -> arg1!! / arg2!!
                     else -> 0.0
                 }
-                val res = java.lang.Double.toString(result!!)
+                val res = (result).toString()
                 setTextButton(res)
             }
         }

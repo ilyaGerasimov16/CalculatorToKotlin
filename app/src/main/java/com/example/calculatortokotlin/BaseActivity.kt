@@ -35,7 +35,6 @@ open class BaseActivity : AppCompatActivity() {
         editor.apply()
     }
 
-
     companion object {
         private const val NameSharedPreference = "Calc"
         private const val AppTheme = "APP_THEME"

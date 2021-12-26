@@ -12,7 +12,7 @@ class SettingsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.acrivity_settings)
         val btnReturn = findViewById<Button>(R.id.button_return)
-        btnReturn.setOnClickListener { v: View? -> finish() }
+        btnReturn.setOnClickListener { finish() }
         initThemeChooser()
     }
 
